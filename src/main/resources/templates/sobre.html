@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="partial/_head.html :: head"></head>
+<body>
+<nav th:replace="partial/_nav.html :: nav"></nav>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="jumbotron col-11 text-center">
+            <h1 class="title-footer">Emotion</h1>
+            <br>
+            <p class="text-footer">Sistema que analisa a imagem de um rosto humano e reconhece as emoções expressadas,
+                para isso faça o upload de uma imagem e ela será analisada por um modelo de Inteligência Artificial
+                treinado para reconhecer as 7 emoções universais básicas, definidas por <a class="nav-link p-0" href="https://www.paulekman.com/" target="_blank" style="display: inline">Paul Ekman</a>.
+                <br>
+                <br>
+                Projeto desenvolvido como Trabalho de Conclusão de Curso, para o curso de Tecnologia em Análise e
+                Desenvolvimento de Sistemas, utilizando a linguagem Java com o framework Spring
+                para desenvolver a interface do usuário e utilizado a linguagem Python para desenvolver a inteligência
+                artificial, criada com uso do Framework TensorFlow.
+            </p>
+            <br>
+            <p class="text-footer">Acadêmico: <a class="nav-link p-0" href="https://www.facebook.com/victhor.baesso" target="_blank" style="display: inline">João Victor Baesso</a>
+                <br>Orientador: Cristiano Agosti <br> UNOESC - Xanxerê (2019)</p>
+        </div>
+    </div>
+</div>
+<footer th:replace="partial/_footer.html :: footer"></footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.js.map"></script>
+</html>

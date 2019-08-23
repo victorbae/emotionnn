@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+.jumbotron, .bg-light {
+  background-color: #f4f4f5 !important;
+}
+
+.jumbotron{
+  margin-bottom: 66px;
+}
+
+.input {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+#img-upload {
+  width: 300px;
+  display: block;
+}
+
+.overlay {
+  opacity: 0;
+  position: absolute;
+  top: 52%;
+  left: 28%;
+  transform: translate(-16%, -50%);
+  -ms-transform: translate(-16%, -50%);
+}
+
+#img-upload, .overlay, #times {
+  transition: opacity .36s ease-in-out;
+  -moz-transition: opacity .36s ease-in-out;
+  -webkit-transition: opacity .36s ease-in-out;
+}
+
+#fade {
+  cursor: pointer;
+  position: relative;
+}
+
+.text-footer, .title-footer, .navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link {
+  color: black;
+}
+
+.title-result, .text-intro, .overlay-text{
+  font-family: 'Raleway', sans-serif;
+}
+
+.overlay-text {
+  font-size: 25px;
+}
+
+.footer {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  min-height: 266px;
+  padding-top: 42px;
+  background-color: #f4f4f5;
+}
+
+@media (min-width: 576px) {
+  #fade:hover #img-upload {
+    filter: alpha(opacity=33);
+    opacity: .3;
+  }
+
+  #fade:hover .overlay {
+    opacity: 1;
+  }
+}

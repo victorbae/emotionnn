@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="partial/_head.html :: head"></head>
+<body>
+<nav th:replace="partial/_nav.html :: nav"></nav>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="jumbotron col-12 col-lg-11">
+            <div class="row justify-content-center m-0 ">
+                <h2 class="col-md-9 title-result text-center">Reconhecimento de emoções a partir da análise do rosto
+                    humano.</h2>
+            </div>
+            <form class="text-center" enctype="multipart/form-data" action="/upload" method="post">
+                <div class="form-group row justify-content-center">
+                    <div class="alert alert-danger d-none col-11 col-md-9 col-lg-7 mt-3" role="alert"
+                         id="formato-incorreto">
+                        São permitidas apenas imagens nos formatos <b>.jpg</b>, <b>.jpeg</b> e <b>.png</b>.
+                    </div>
+                </div>
+                <div class="form-group m-0">
+                    <label id="fade" for="input">
+                        <img src="img/image-icon.png" alt="Upload" id="img-upload" class="img-fluid rounded-circle">
+                        <div class="overlay row justify-content-center">
+                            <p class="text-center overlay-text">Selecionar imagem</p>
+                        </div>
+                    </label>
+                    <div class="form-group row justify-content-center m-0">
+                        <button id="rm-img" type="button" class="btn btn-sm btn-outline-danger d-none">Remover
+                            imagem&nbsp;<i class="far fa-trash-alt"></i></button>
+                    </div>
+                    <input type="file" accept="image/jpeg,image/jpg,image/png" capture="camera" class="input" id="input"
+                           name="file" required="required">
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Enviar&nbsp;<i class="far fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="partial/_footer.html :: footer"></footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.js.map"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</html>

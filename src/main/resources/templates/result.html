@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="partial/_head.html :: head"></head>
+<body>
+<nav th:replace="partial/_nav.html :: nav"></nav>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="jumbotron col-12 col-lg-11 ">
+            <div class="row justify-content-center m-0">
+                <h2 class="title-result">Resultado da análise</h2>
+            </div>
+            <div class="row justify-content-center m-0">
+                <div class="col-md-6 text-center p-3">
+                    <img th:src="@{'data:image/jpeg;base64,'+${image}}" alt="Resultado" id="img-result"
+                         class="img-fluid">
+                </div>
+                <div class="accordion col-md-6 p-3">
+                    <ul class="list-group">
+                        <li class="list-group-item m-0" th:each="emotion : ${emotions}">
+                            <span th:text="${emotion.name}"/>
+                            <span class="float-right" th:text="${emotion.value} + '%'"/>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                     th:style="|width:${emotion.intValue}%;|"
+                                     th:aria-valuenow="${emotion.intValue}"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row justify-content-center m-0 mt-3">
+                <button type="button" class="btn btn-sm btn-outline-primary" onclick="location.href='/again'">Nova
+                    análise&nbsp;<i class="fas fa-redo"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="partial/_footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.js.map"></script>
+</html>
