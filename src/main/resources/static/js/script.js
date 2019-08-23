@@ -8,6 +8,7 @@ $(function () {
     })
 
     $('#rm-img').on('click', function () {
+        $('#input').val('');
         $('#img-upload').attr('src', 'img/image-icon.png').width(300).height(300);
         $('#rm-img').addClass('d-none');
     })
