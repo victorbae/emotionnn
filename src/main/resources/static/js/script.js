@@ -1,6 +1,7 @@
 $(function () {
     $('#input').on('change', function () {
         if (arquivoValido()) {
+            $('#message').addClass('d-none');
             changeImg(this);
             $('#rm-img').removeClass('d-none');
             $('.pega-mt').css('margin-top', '0px');
@@ -35,6 +36,5 @@ $(function () {
         $('#formato-incorreto').addClass('d-none');
         return true;
     }
-
 
 });

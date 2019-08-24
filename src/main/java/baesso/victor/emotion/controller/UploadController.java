@@ -19,8 +19,8 @@ public class UploadController {
 
     @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file, ModelMap model) throws IOException {
-        model.addAttribute("emotions", recognizer.analyze());
-        model.addAttribute("image", Base64.getEncoder().encodeToString(file.getBytes()));
-        return "result";
+            model.addAttribute("emotions", recognizer.analyze(file));
+            model.addAttribute("image", Base64.getEncoder().encodeToString(file.getBytes()));
+            return "result";
     }
 }

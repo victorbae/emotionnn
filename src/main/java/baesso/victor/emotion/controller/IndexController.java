@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     @GetMapping({"/", "/home", "/again"})
-    public String index() {
-        return "index";
-    }
+    public String index() { return "index"; }
 
     @GetMapping("sobre")
     public String sobre() {
