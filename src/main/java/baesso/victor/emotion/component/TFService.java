@@ -2,26 +2,27 @@ package baesso.victor.emotion.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 import org.tensorflow.SavedModelBundle;
 import org.tensorflow.Session;
 import org.tensorflow.Tensor;
 import org.tensorflow.TensorFlow;
 
-import java.io.File;
 import java.io.IOException;
+
 
 @Component
 public class TFService {
 
     @Autowired
-    private ImageUtils imgUtils;
+    private ImageUtils image;
 
-    public float[][] predict(File imagem) throws IOException {
-        System.out.println(TensorFlow.version());
+    public float[][] predict(MultipartFile imagem) throws IOException {
+        System.out.println("TensorFlow " + TensorFlow.version());
         SavedModelBundle smb = SavedModelBundle.load("src/model", "serve");
         Session s = smb.session();
 
-        float[][][][] imageData = imgUtils.loadAndNormalizeImages(imagem);
+        float[][][][] imageData = image.toMatriz(imagem);
 
         Tensor inputTensor = Tensor.create(imageData, Float.class);
 

@@ -18,4 +18,11 @@ public class FileExceptions {
         modelAndView.getModel().put("message", "O tamanho máximo da imagem deve ser 3MB.");
         return modelAndView;
     }
+
+    @ExceptionHandler(IOException.class)
+    public ModelAndView erroAoTrabalharComArquivo(MaxUploadSizeExceededException exc, HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.getModel().put("message", "Ocorreu um erro ao manipular a imagem.");
+        return modelAndView;
+    }
 }

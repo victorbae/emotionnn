@@ -18,25 +18,24 @@ import static org.bytedeco.opencv.global.opencv_imgproc.cvResize;
 @Component
 public class ImageUtils {
 
-    private final int height = 48;
-    private final int width = 48;
-    private final float mean = 117f;
-    private final float scale = 1f;
+    public float[][][][] toMatriz(MultipartFile uploadedImage) throws IOException {
+        int height = 48;
+        int width = 48;
 
-    public float[][][][] loadAndNormalizeImages(File photo) throws IOException {
         float[][][][] result = new float[1][height][width][1];
-
-        BufferedImage imagemBuff = ImageIO.read(photo);
-
-        IplImage origImg = toIplImage(imagemBuff);
-        IplImage resizedImg = IplImage.create(width, height, origImg.depth(), origImg.nChannels());
-        cvResize(origImg, resizedImg);
-
+        File imagem = toFile(uploadedImage);
+        BufferedImage buffer = ImageIO.read(imagem);
+        IplImage original = toIplImage(buffer);
+        IplImage resizedImg = IplImage.create(width, height, original.depth(), original.nChannels());
+        cvResize(original, resizedImg);
         result[0] = getRGB2Gray(resizedImg);
+        imagem.delete();
         return result;
     }
 
     private float[][][] getRGB2Gray(IplImage image) {
+        float mean = 117f;
+        float scale = 1f;
         float[][][] result = new float[image.height()][image.width()][1];
         for (int i = 0; i < image.height(); i++) {
             for (int j = 0; j < image.width(); j++) {
@@ -50,7 +49,7 @@ public class ImageUtils {
         return result;
     }
 
-    public static File toFile(MultipartFile file) throws IOException {
+    private File toFile(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         convFile.createNewFile();
         FileOutputStream fos = new FileOutputStream(convFile);
