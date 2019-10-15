@@ -8,14 +8,14 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Emotion {
 
     private String name;
 
-    private Double value;
+    private double value;
 
-    public Integer getIntValue() {
-        return this.value.intValue();
+    public Emotion(String nome, double value){
+        this.name = nome;
+        this.value = value;
     }
 }

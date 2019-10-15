@@ -21,8 +21,8 @@
                             <span class="float-right" th:text="${emotion.value} + '%'"/>
                             <div class="progress">
                                 <div class="progress-bar bg-success" role="progressbar"
-                                     th:style="|width:${emotion.intValue}%;|"
-                                     th:aria-valuenow="${emotion.intValue}"
+                                     th:style="|width:${emotion.value}%;|"
+                                     th:aria-valuenow="${emotion.value}"
                                      aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </li>

@@ -18,9 +18,13 @@ public class UploadController {
     private AnalyzeService recognizer;
 
     @PostMapping("/upload")
-    public String upload(@RequestParam("file") MultipartFile file, ModelMap model) throws IOException {
+    public String upload(@RequestParam("file") MultipartFile file, ModelMap model) {
+        try {
             model.addAttribute("emotions", recognizer.analyze(file));
             model.addAttribute("image", Base64.getEncoder().encodeToString(file.getBytes()));
-            return "result";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "result";
     }
 }
