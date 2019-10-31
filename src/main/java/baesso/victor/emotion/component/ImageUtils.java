@@ -34,15 +34,13 @@ public class ImageUtils {
     }
 
     private float[][][] getRGB2Gray(IplImage image) {
-        float mean = 117f;
-        float scale = 1f;
         float[][][] result = new float[image.height()][image.width()][1];
         for (int i = 0; i < image.height(); i++) {
             for (int j = 0; j < image.width(); j++) {
                 CvScalar pixel = cvGet2D(image, i, j);
-                float r = (float) (pixel.val(2) - mean) / scale; //R
-                float g = (float) (pixel.val(1) - mean) / scale; //G
-                float b = (float) (pixel.val(0) - mean) / scale; //B
+                float r = (float) pixel.val(2);
+                float g = (float) pixel.val(1);
+                float b = (float) pixel.val(0);
                 result[i][j][0] = (r + b + g) / 3;
             }
         }

@@ -8,5 +8,5 @@ import java.util.Collection;
 
 public interface AnalyzeService {
 
-    Collection<Emotion> analyze(MultipartFile imagem) throws IOException;
+    Collection<Emotion> analisa(MultipartFile imagem) throws IOException;
 }

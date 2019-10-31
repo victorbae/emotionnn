@@ -15,24 +15,23 @@ public class Recognizer {
 
     @Autowired
     private TFService tensorFlowModel;
+    @Autowired
+    private ImageUtils image;
 
     public Collection<Emotion> reconhece(MultipartFile imagem) throws IOException {
 
-        float[][] predictions = tensorFlowModel.predict(imagem);
+        // Converte a imagem para uma matriz
+        float[][][][] matriz = image.toMatriz(imagem);
 
-        //@formatter:off
-        System.out.println(">>> Predições >>>" +
-                "\nRaiva -> " + predictions[0][0] +
-                "\nNojo -> " + predictions[0][1] +
-                "\nMedo -> " + predictions[0][2] +
-                "\nAlegria -> " + predictions[0][3] +
-                "\nNeutro -> " + predictions[0][4] +
-                "\nTristeza -> " + predictions[0][5] +
-                "\nSurpresa -> " + predictions[0][6] +
-        "\n>>> End >>>");
-        //@formatter:on
+        // Faz a análise da matriz que representa a imagem
+        float[][] predictions = tensorFlowModel.predict(matriz);
 
-        return toCollection(predictions);
+        // Transforma o array que foi retornado da análise em
+        // uma lista de objetos que representam as emoções
+        Collection<Emotion> emocoes = toCollection(predictions);
+
+        // Retorna a lista de emoções
+        return emocoes;
     }
 
     private Collection<Emotion> toCollection(float[][] predictions) {
@@ -51,3 +50,15 @@ public class Recognizer {
         return new BigDecimal(val * 100).setScale(2, RoundingMode.HALF_EVEN).doubleValue();
     }
 }
+//
+////@formatter:off
+//        System.out.println(">>> Predições >>>" +
+//                "\nRaiva -> " + predictions[0][0] +
+//                "\nNojo -> " + predictions[0][1] +
+//                "\nMedo -> " + predictions[0][2] +
+//                "\nAlegria -> " + predictions[0][3] +
+//                "\nNeutro -> " + predictions[0][4] +
+//                "\nTristeza -> " + predictions[0][5] +
+//                "\nSurpresa -> " + predictions[0][6] +
+//                "\n>>> End >>>");
+////@formatter:on

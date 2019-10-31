@@ -14,17 +14,12 @@ import java.io.IOException;
 @Component
 public class TFService {
 
-    @Autowired
-    private ImageUtils image;
-
-    public float[][] predict(MultipartFile imagem) throws IOException {
+    public float[][] predict(float[][][][] imgMatriz) throws IOException {
         System.out.println("TensorFlow " + TensorFlow.version());
         SavedModelBundle smb = SavedModelBundle.load("src/model", "serve");
         Session s = smb.session();
 
-        float[][][][] imageData = image.toMatriz(imagem);
-
-        Tensor inputTensor = Tensor.create(imageData, Float.class);
+        Tensor inputTensor = Tensor.create(imgMatriz, Float.class);
 
         float[][] y = s.runner()
                 .feed("Placeholder:0", inputTensor)
